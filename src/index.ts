@@ -51,8 +51,8 @@ let videos: VideosType[] = [
         author: 'Николай Васильевич Гоголь',
         canBeDownloaded: true,
         minAgeRestriction: null,
-        createAt:  String(new Date()), 
-        publicationDate:  String(new Date()),
+        createAt: new Date().toISOString(),
+        publicationDate:  new Date().toISOString(),
         availableReaolutions: [
             'P144',
         ]
@@ -63,8 +63,8 @@ let videos: VideosType[] = [
         author: 'Пушкин Александр Сергеевич',
         canBeDownloaded: true,
         minAgeRestriction: null,
-        createAt:  String(new Date()), 
-        publicationDate:  String(new Date()),
+        createAt: new Date().toISOString(),
+        publicationDate: new Date().toISOString(),
         availableReaolutions: [
             'P144',
         ]
@@ -75,8 +75,8 @@ let videos: VideosType[] = [
         author: 'Шолохов Михаил Александрович',
         canBeDownloaded: true,
         minAgeRestriction: null,
-        createAt:  String(new Date()), 
-        publicationDate:  String(new Date()),
+        createAt: new Date().toISOString(), 
+        publicationDate: new Date().toISOString(),
         availableReaolutions: [
             'P144',
         ]
@@ -137,8 +137,8 @@ app.post('/videos', (req: Request, res: Response) => {
         author: author,
         canBeDownloaded: req.body.autcanBeDownloadedhor || true,
         minAgeRestriction: req.body.minAgeRestriction || null,
-        createAt: req.body.createAt || String(new Date()),
-        publicationDate: req.body.publicationDate || String(new Date()),
+        createAt: req.body.createAt ||new Date().toISOString(),
+        publicationDate: req.body.publicationDate || new Date().toISOString(),
         availableReaolutions: req.body.availableReaolutions || ['P144']
     }
     
@@ -182,8 +182,8 @@ app.put('/videos/:id', (req: Request, res: Response) => {
         video.availableReaolutions = req.body.availableReaolutions || ['P144'];
         video.canBeDownloaded = req.body.canBeDownloaded || true;
         video.minAgeRestriction = req.body.minAgeRestriction || null;
-        video.createAt = req.body.createAt ||  String(new Date());
-        video.publicationDate = req.body.publicationDate ||  String(new Date());
+        video.createAt = req.body.createAt || new Date().toISOString();
+        video.publicationDate = req.body.publicationDate || new Date().toISOString();
         
         if(video.title.length > 40  || typeof video.title !== 'string' || video.title.trim() === ''){
             errors.push( {message: 'error', field: 'title'})
